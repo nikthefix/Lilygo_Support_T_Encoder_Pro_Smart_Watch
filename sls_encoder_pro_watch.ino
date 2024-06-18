@@ -28,6 +28,10 @@ Select Flash Size 16M
 Select Partition Scheme "Huge App"
 Select PSRAM "OPI PSRAM"
 
+Todo:
+
+Refactor to make compatible with LVGL 9.1 (proving problematic at last attempt)
+
 */
 
 
