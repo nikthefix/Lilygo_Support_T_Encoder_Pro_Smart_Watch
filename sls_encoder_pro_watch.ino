@@ -110,21 +110,10 @@ void setup()
     pinMode(LCD_VCI_EN, OUTPUT);
     digitalWrite(LCD_VCI_EN, HIGH);
 
-    //pinMode(KNOB_DATA_A, INPUT_PULLUP);
-    //pinMode(KNOB_DATA_B, INPUT_PULLUP);
-    //pinMode(BUZZER_DATA, OUTPUT);
-
-    //ledcAttachPin(BUZZER_DATA, 1);
-    //ledcSetup(1, 2000, 8);
-    //ledcWrite(1, 0); // 0 - 255
-   
-
     static lv_disp_draw_buf_t draw_buf;
     static lv_color_t *buf;
 
     Serial.begin(115200);
-    //Serial.println("T-Encoder-Pro");
-    //Serial.printf("psram size : %d MB\r\nflash size : %d MB\r\n", ESP.getPsramSize() / 1024 / 1024, ESP.getFlashChipSize() / 1024 / 1024);
     CHSC5816_Initialization();
     sh8601_init();
     //lcd_setRotation(2); 
@@ -139,7 +128,7 @@ void setup()
     //disp_drv.rounder_cb = my_rounder;
     disp_drv.flush_cb = lv_disp_flush;
     disp_drv.draw_buf = &draw_buf;
-    //disp_drv.full_refresh = 1;
+    //disp_drv.full_refresh = 1; // for testing only
     lv_disp_drv_register(&disp_drv);
     static lv_indev_drv_t indev_drv;
     lv_indev_drv_init(&indev_drv);
