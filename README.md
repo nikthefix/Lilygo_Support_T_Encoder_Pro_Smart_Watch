@@ -1,6 +1,6 @@
 nikthefix 18.06.2024
 
-This is the Squareline Studio Smart Watch Demo implemented for the Lilygo T-Encoder-Pro
+This is the Squareline Studio Smart Watch Demo implemented for the Lilygo T-Encoder-Pro.
 At present the encoder dial and buzzer have not been assigned a function.
 
 
