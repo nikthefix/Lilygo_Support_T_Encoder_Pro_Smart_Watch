@@ -18,8 +18,10 @@ The driver files are supplied in the sketch directory so no installation is requ
 The touch driver is also included in the sketch directory so no installation is required.
 
 Please set in lv_conf.h:  --->   #define LV_COLOR_16_SWAP 1
+                          --->   #define LV_FONT_MONTSERRAT_14 1
 
-Set display brightness @ line 121
+Set display brightness @ line 123
+
 
 Build options:
 
