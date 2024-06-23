@@ -111,7 +111,7 @@ void setup()
 {
 
     pinMode(LCD_VCI_EN, OUTPUT);
-    digitalWrite(LCD_VCI_EN, HIGH);
+    digitalWrite(LCD_VCI_EN, HIGH);//enable display hardware
 
     static lv_disp_draw_buf_t draw_buf;
     static lv_color_t *buf;
@@ -119,7 +119,7 @@ void setup()
     Serial.begin(115200);
     CHSC5816_Initialization();
     sh8601_init();
-    //lcd_setRotation(2); 
+    //lcd_setRotation(2); // 0-3
     lcd_brightness(200); // 0-255
     lv_init();
     buf = (lv_color_t *)heap_caps_malloc(sizeof(lv_color_t) * LVGL_LCD_BUF_SIZE, MALLOC_CAP_INTERNAL);
@@ -128,10 +128,18 @@ void setup()
     lv_disp_drv_init(&disp_drv);
     disp_drv.hor_res = EXAMPLE_LCD_H_RES;
     disp_drv.ver_res = EXAMPLE_LCD_V_RES;
-    //disp_drv.rounder_cb = my_rounder;
+  
+    //The rounder callback function is supposed to be required for partial update with this display according to the datasheet but I've found it unecessary so far...
+    //Perhaps the datasheet is out of date. Anyway, for the time being I've commented out the function.
+    //disp_drv.rounder_cb = my_rounder; 
+  
     disp_drv.flush_cb = lv_disp_flush;
     disp_drv.draw_buf = &draw_buf;
-    //disp_drv.full_refresh = 1; // for testing only
+  
+    //The full_refresh setting is useful for testing if you run into problems with display artifacts caused by partial region updates.
+    //It forces LVGL to render a whole screen at a time but is therefore (possibly) much slower than only updating the 'dirty areas' which need redrawing.
+    //disp_drv.full_refresh = 1; 
+  
     lv_disp_drv_register(&disp_drv);
     static lv_indev_drv_t indev_drv;
     lv_indev_drv_init(&indev_drv);
