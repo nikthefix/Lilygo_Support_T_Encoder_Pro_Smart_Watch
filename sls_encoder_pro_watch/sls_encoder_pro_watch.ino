@@ -16,9 +16,14 @@ Notes:
 This build uses a lean SH8601 display driver rather than the Arduino_GFX framework used in the Lilygo supplied examples.
 The driver files are supplied in the sketch directory so no installation is required.
 The touch driver is also included in the sketch directory so no installation is required.
+I recommend a clean LVGL install via the Arduino library manager.
 
-Please set in lv_conf.h:  --->   #define LV_COLOR_16_SWAP 1
-                          --->   #define LV_FONT_MONTSERRAT_14 1
+
+Please set in lv_conf.h:  --->   #if 1                                  (line 15)
+                          --->   #define LV_COLOR_16_SWAP 1             (line 30)
+                          --->   #define LV_MEM_CUSTOM 1                (line 49)
+                          --->   #define LV_TICK_CUSTOM 1               (line 88)
+                          --->   #define LV_FONT_MONTSERRAT_14 1        (line 367)
 
 Set display brightness @ line 123
 
